@@ -32,10 +32,8 @@ Testing the C Program for the desired output.
 #include <fcntl.h> 
 #include <unistd.h>
 #include <sys/wait.h>
-
 void server(int, int); 
 void client(int, int); 
-
 int main() { 
     int p1[2], p2[2], pid; 
     pipe(p1); 
@@ -58,7 +56,6 @@ int main() {
     wait(NULL); // Wait for child process to finish
     return 0; 
 } 
-
 void server(int rfd, int wfd) { 
     int n; 
     char fname[2000]; 
@@ -78,7 +75,6 @@ void server(int rfd, int wfd) {
         close(fd);
     } 
 }
-
 void client(int wfd, int rfd) {
     int n; 
     char fname[2000];
@@ -144,8 +140,6 @@ int main() {
 
     return 0;
 }
-
-// Server: Reads from hello.txt and writes to FIFO
 void server() {
     int fifo_fd, file_fd;
     char buffer[1024];
@@ -173,8 +167,6 @@ void server() {
     close(file_fd);
     close(fifo_fd);
 }
-
-// Client: Reads from FIFO and prints the content
 void client() {
     int fifo_fd;
     char buffer[1024];
